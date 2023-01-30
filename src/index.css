@@ -73,7 +73,7 @@ input[type="submit"] {
 
 input:disabled {
   cursor: not-allowed;
-  background-color: #000;
+  background-color: #555;
 }
 
 button:hover,
