@@ -2,7 +2,7 @@ import "./Message.css";
 
 const Message = ({ msg, type }) => {
   return (
-    <div class={`message ${type}`}>
+    <div className={`message ${type}`}>
       <p>{msg}</p>
     </div>
   );
