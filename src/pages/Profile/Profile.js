@@ -15,6 +15,7 @@ import {
   publishPhoto,
   resetMessage,
   getUserPhotos,
+  deletePhoto,
 } from "../../slices/photoSlice";
 
 const Profile = () => {
@@ -50,6 +51,12 @@ const Profile = () => {
     setImage(image);
   };
 
+  const resetComponentMessage = () => {
+    setTimeout(() => {
+      dispatch(resetMessage());
+    }, 2000);
+  };
+
   const submitHandle = (e) => {
     e.preventDefault();
 
@@ -70,9 +77,14 @@ const Profile = () => {
 
     setTitle("");
 
-    setTimeout(() => {
-      dispatch(resetMessage());
-    }, 2000);
+    resetComponentMessage();
+  };
+
+  // Delete a photo
+  const handleDelete = (id) => {
+    dispatch(deletePhoto(id));
+
+    resetComponentMessage();
   };
 
   if (loading) {
@@ -130,16 +142,23 @@ const Profile = () => {
                     alt={photo.title}
                   />
                 )}
+                {id === userAuth._id ? (
+                  <div className="actions">
+                    <Link to={`/photos/${photo._id}`}>
+                      <BsFillEyeFill />
+                    </Link>
+                    <BsPencilFill />
+                    <BsXLg onClick={() => handleDelete(photo._id)} />
+                  </div>
+                ) : (
+                  // eslint-disable-next-line no-undef
+                  <Link className="btn" to={`/photos/${photo._id}`}>
+                    Ver
+                  </Link>
+                )}
               </div>
             ))}
-          {id === userAuth._id ? (
-            <p>actions</p>
-          ) : (
-            // eslint-disable-next-line no-undef
-            <Link className="btn" to={`/photos/${photo._id}`}>
-              Ver
-            </Link>
-          )}
+
           {photos.length === 0 && <p>Ainda não há fotos publicadas</p>}
         </div>
       </div>
