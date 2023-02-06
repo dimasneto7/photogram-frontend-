@@ -23,6 +23,11 @@
   border-bottom: 1px solid #363636;
 }
 
+.comments h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 .author {
   display: flex;
   font-weight: bold;

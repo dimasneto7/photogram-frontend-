@@ -8,8 +8,9 @@
 
 .photo-author {
   text-align: left;
+  margin-bottom: 0;
 }
 
 .photo-author a {
-  font-weight: bold;
+  font-weight: 600;
 }
